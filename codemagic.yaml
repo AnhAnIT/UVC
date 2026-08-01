@@ -1,7 +1,7 @@
 workflows:
   my-workflow-id: # ID hoặc tên của luồng build (vd: ios-build, android-build)
     name: Build & Test Workflow # Tên hiển thị trên giao diện Codemagic
-    instance_type: mac_mini_m1 # Cấu hình máy máy chủ build (mac_mini_m1, mac_pro, v.v.)
+    instance_type: mac_mini_m1 # Cấu hình máy chủ build (mac_mini_m1, mac_pro, v.v.)
     max_build_duration: 60 # Thời gian tối đa cho 1 lượt build (phút)
     
     # 1. Khai báo biến môi trường (API Key, Mật khẩu, Token...)
@@ -28,15 +28,6 @@ workflows:
 
     # 3. Quản lý Artifacts (File đầu ra sau khi build xong)
     artifacts:
-      - build/ios/ipa/*.ipa
-      - *.app
-      - build/**/outputs/**/*.apk
-
-    # 4. Tự động gửi thông báo / Đẩy app lên App Store / TestFlight
-    publishing:
-      email:
-        recipients:
-          - user@example.com
-      app_store_connect: # Cấu hình tự động upload lên TestFlight / App Store
-        auth: integration
-        submit_to_testflight: true
+      - "build/ios/ipa/*.ipa"
+      - "*.app"
+      - "build/**/outputs/**/*.apk"
